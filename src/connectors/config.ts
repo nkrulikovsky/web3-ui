@@ -16,7 +16,7 @@ export const availableChains = [
 ];
 
 const { chains, publicClient } = configureChains(availableChains, [
-  alchemyProvider({ apiKey: envVars.ALCHEMY_ID }),
+  alchemyProvider({ apiKey: envVars.REACT_APP_ALCHEMY_ID }),
   publicProvider(),
 ]);
 const { connectors } = getDefaultWallets({
