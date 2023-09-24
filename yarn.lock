@@ -2274,7 +2274,7 @@
   dependencies:
     "@tanstack/query-persist-client-core" "4.35.3"
 
-"@tanstack/react-query@^4.28.0":
+"@tanstack/react-query@^4.28.0", "@tanstack/react-query@^4.35.3":
   version "4.35.3"
   resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.35.3.tgz#03d726ef6a19d426166427c6539b003dd9606d1b"
   integrity sha512-UgTPioip/rGG3EQilXfA2j4BJkhEQsR+KAbF+KIuvQ7j4MkgnTCJF01SfRpIRNtQTlEfz/+IL7+jP8WA8bFbsw==
