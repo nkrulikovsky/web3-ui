@@ -10,10 +10,20 @@ export default function Dashboard() {
 
   return (
     <div>
-      Dashboard
-      {tokens.map((token) => (
-        <Token key={token.name} token={token} />
-      ))}
+      <div className='font-bold text-lg'>Dashboard</div>
+      <div>
+        <div className='flex items-center m-4 border rounded-lg border-gray-400 p-4 font-bold'>
+          <div className='w-1/6'>Name</div>
+          <div className='w-1/6'>Symbol</div>
+          <div className='w-3/5'>Address</div>
+          <div className='w-1/6'>Balance</div>
+          <div className='w-1/6'>Price</div>
+        </div>
+
+        {tokens.map((token) => (
+          <Token key={token.name} token={token} />
+        ))}
+      </div>
     </div>
   );
 }
