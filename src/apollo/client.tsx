@@ -4,56 +4,53 @@ import {
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
-import merge from 'deepmerge';
 import { useEffect, useState } from 'react';
+import { useChainId } from 'wagmi';
 
-let apolloClient: ApolloClient<NormalizedCacheObject>;
+import {
+  getUniswapAPIsByChainId,
+  UniswapAPIEndpoints,
+} from '../constants/getUniswapAPIsByChainId';
 
-function createApolloClient() {
-  const uri = process.env.NEXT_PUBLIC_GRAPHQL_API;
+const apolloClientMap: Record<string, ApolloClient<NormalizedCacheObject>> = {};
 
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  };
-
+function createApolloClient(uri: string) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({
       uri,
-      headers,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     }),
     cache: new InMemoryCache(),
   });
 }
 
-export function initializeApollo(
-  initialState: NormalizedCacheObject | null = null,
-) {
-  const _apolloClient = apolloClient ?? createApolloClient();
-
-  if (initialState) {
-    const existingCache = _apolloClient.extract();
-    const data = merge(initialState, existingCache);
-    _apolloClient.cache.restore(data);
+export function initializeApollo(uri: string) {
+  if (!apolloClientMap[uri]) {
+    apolloClientMap[uri] = createApolloClient(uri);
   }
 
-  if (typeof window === 'undefined') return _apolloClient;
-  if (!apolloClient) apolloClient = _apolloClient;
-
-  return _apolloClient;
+  return apolloClientMap[uri];
 }
 
-export function useApollo(initialState: NormalizedCacheObject | null = null) {
+export function useApollo(apiType: keyof UniswapAPIEndpoints) {
   const [store, setStore] =
     useState<ApolloClient<NormalizedCacheObject> | null>(null);
+  const chainId = useChainId();
+  const thegraphUriData = getUniswapAPIsByChainId(chainId);
+
+  // Extract the specific URI based on the type of API needed (poolInformation, stakingAndPositions, poolDaysData)
+  const thegraphUri = thegraphUriData ? thegraphUriData[apiType] : null;
 
   useEffect(() => {
-    (async () => {
-      const apollo = initializeApollo(initialState);
+    if (thegraphUri) {
+      const apollo = initializeApollo(thegraphUri);
       setStore(apollo);
-    })();
-  }, [initialState]);
+    }
+  }, [thegraphUri]);
 
   return store;
 }

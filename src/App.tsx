@@ -14,17 +14,17 @@ import { availableChains, wagmiConfig } from './connectors/config';
 
 export default function App() {
   const queryClient = new QueryClient();
-  const apolloClient = useApollo();
+  const apolloClient = useApollo('stakingAndPositions');
 
   if (!apolloClient) {
     return <div className='h-screen w-screen'>loading ...</div>;
   }
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <QueryClientProvider client={queryClient}>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider chains={availableChains}>
+    <QueryClientProvider client={queryClient}>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={availableChains}>
+          <ApolloProvider client={apolloClient}>
             <div className='flex justify-between py-5 mx-auto px-4 items-center'>
               <div className='flex-1 text-xl font-bold hidden md:block'>
                 Trendsetters
@@ -45,9 +45,9 @@ export default function App() {
             <Layout>
               <AppRouter />
             </Layout>
-          </RainbowKitProvider>
-        </WagmiConfig>
-      </QueryClientProvider>
-    </ApolloProvider>
+          </ApolloProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </QueryClientProvider>
   );
 }

@@ -1,0 +1,12 @@
+query getIncentives($poolId: String!) {
+  incentives(where: { pool_in: [$poolId], ended: false }) {
+    id
+    rewardToken
+    pool
+    startTime
+    endTime
+    refundee
+    reward
+    ended
+  }
+}

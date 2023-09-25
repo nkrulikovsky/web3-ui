@@ -1,19 +1,12 @@
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { goerli, mainnet } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 import envVars from '../config';
 
-export const availableChains = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-];
+export const availableChains = [mainnet, goerli];
 
 const { chains, publicClient } = configureChains(availableChains, [
   alchemyProvider({ apiKey: envVars.REACT_APP_ALCHEMY_ID }),

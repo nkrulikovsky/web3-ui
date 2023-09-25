@@ -1,8 +1,11 @@
+import { useChainId } from 'wagmi';
+
 import Token from './Token';
 import { poolTokens } from '../constants/poolTokens';
 import useFetchStandardTokens from '../hooks/useFetchErc20Tokens';
 
 export default function Dashboard() {
+  const data = useChainId();
   const { tokens } = useFetchStandardTokens(
     1,
     poolTokens.map((token) => token.address),
