@@ -5221,8 +5221,26 @@ export type GetPoolInfoQuery = {
     id: string;
     totalValueLockedUSD: any;
     totalValueLockedETH: any;
-    token0: { __typename?: 'Token'; name: string; decimals: any };
-    token1: { __typename?: 'Token'; name: string; decimals: any };
+    createdAtTimestamp: any;
+    createdAtBlockNumber: any;
+    feesUSD: any;
+    feeTier: any;
+    liquidity: any;
+    sqrtPrice: any;
+    volumeUSD: any;
+    txCount: any;
+    token0: {
+      __typename?: 'Token';
+      name: string;
+      symbol: string;
+      decimals: any;
+    };
+    token1: {
+      __typename?: 'Token';
+      name: string;
+      symbol: string;
+      decimals: any;
+    };
   } | null;
 };
 
@@ -5297,14 +5315,24 @@ export const GetPoolInfoDocument = gql`
       id
       token0 {
         name
+        symbol
         decimals
       }
       token1 {
         name
+        symbol
         decimals
       }
       totalValueLockedUSD
       totalValueLockedETH
+      createdAtTimestamp
+      createdAtBlockNumber
+      feesUSD
+      feeTier
+      liquidity
+      sqrtPrice
+      volumeUSD
+      txCount
     }
   }
 `;

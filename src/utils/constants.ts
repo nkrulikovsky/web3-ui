@@ -60,8 +60,5 @@ export const COINGECKO_PLATFORMS = Object.freeze({
 });
 export type COINGECKO_PLATFORM = keyof typeof COINGECKO_PLATFORMS;
 
-/**
- * Stablecoin addresses
- *
- * NOTE: All addresses are lowercase
- */
+export const tokenBaseURL =
+  'https://vnx-token-pics.s3.eu-central-1.amazonaws.com/';
