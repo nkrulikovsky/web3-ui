@@ -58238,9 +58238,7 @@
         "name": "derivedFrom",
         "description": "creates a virtual field on the entity that may be queried but cannot be set manually through the mappings API.",
         "isRepeatable": false,
-        "locations": [
-          "FIELD_DEFINITION"
-        ],
+        "locations": ["FIELD_DEFINITION"],
         "args": [
           {
             "name": "field",
@@ -58264,20 +58262,14 @@
         "name": "entity",
         "description": "Marks the GraphQL type as indexable entity.  Each type that should be an entity is required to be annotated with this directive.",
         "isRepeatable": false,
-        "locations": [
-          "OBJECT"
-        ],
+        "locations": ["OBJECT"],
         "args": []
       },
       {
         "name": "include",
         "description": null,
         "isRepeatable": false,
-        "locations": [
-          "FIELD",
-          "FRAGMENT_SPREAD",
-          "INLINE_FRAGMENT"
-        ],
+        "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
         "args": [
           {
             "name": "if",
@@ -58301,11 +58293,7 @@
         "name": "skip",
         "description": null,
         "isRepeatable": false,
-        "locations": [
-          "FIELD",
-          "FRAGMENT_SPREAD",
-          "INLINE_FRAGMENT"
-        ],
+        "locations": ["FIELD", "FRAGMENT_SPREAD", "INLINE_FRAGMENT"],
         "args": [
           {
             "name": "if",
@@ -58329,9 +58317,7 @@
         "name": "subgraphId",
         "description": "Defined a Subgraph ID for an object type",
         "isRepeatable": false,
-        "locations": [
-          "OBJECT"
-        ],
+        "locations": ["OBJECT"],
         "args": [
           {
             "name": "id",
