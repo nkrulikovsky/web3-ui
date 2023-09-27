@@ -37,8 +37,9 @@ export function initializeApollo(uri: string) {
 }
 
 export function useApollo(apiType: keyof UniswapAPIEndpoints) {
-  const [store, setStore] =
-    useState<ApolloClient<NormalizedCacheObject> | null>(null);
+  const [store, setStore] = useState<
+    ApolloClient<NormalizedCacheObject> | undefined
+  >(undefined);
   const chainId = useChainId();
   const thegraphUriData = getUniswapAPIsByChainId(chainId);
 

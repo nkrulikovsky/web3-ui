@@ -1,5 +1,5 @@
-query getIncentives($poolId: String!) {
-  incentives(where: { pool_in: [$poolId], ended: false }) {
+query getIncentive($poolId: [Bytes!]) {
+  incentives(where: { pool_in: $poolId, ended: false }) {
     id
     rewardToken
     pool

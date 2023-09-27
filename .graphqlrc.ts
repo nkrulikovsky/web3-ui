@@ -8,8 +8,16 @@ const config: CodegenConfig = {
   ],
   documents: 'src/query/**/*.graphql',
   generates: {
-    generated: {
-      plugins: [],
+    'src/generated/gql/graphql.tsx': {
+      plugins: [
+        'typescript',
+        'typescript-operations',
+        'typescript-react-apollo',
+      ],
+      overwrite: true,
+      hooks: {
+        afterOneFileWrite: ['prettier --write'],
+      },
     },
     './graphql.schema.json': {
       plugins: ['introspection'],

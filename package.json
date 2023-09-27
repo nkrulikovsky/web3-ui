@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "lint:fix": "eslint src --fix && yarn format",
     "format": "prettier -w .",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen  --config .graphqlrc.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +58,8 @@
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/client-preset": "^4.1.0",
     "@graphql-codegen/introspection": "4.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.49.0",

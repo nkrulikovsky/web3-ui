@@ -1,0 +1,25 @@
+query getPoolInfo($poolId: ID!) {
+  pool(id: $poolId) {
+    id
+    token0 {
+      name
+      symbol
+      decimals
+    }
+    token1 {
+      name
+      symbol
+      decimals
+    }
+    totalValueLockedUSD
+    totalValueLockedETH
+    createdAtTimestamp
+    createdAtBlockNumber
+    feesUSD
+    feeTier
+    liquidity
+    sqrtPrice
+    volumeUSD
+    txCount
+  }
+}
